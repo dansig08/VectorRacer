@@ -1,6 +1,7 @@
 //this is where i will keep the tracks
 #include <iostream>
 #include <vector>
+#include <stdlib.h>
 
 class Tracks {
 public:
@@ -240,6 +241,8 @@ void Tracks::ovaltrack(int starti, int startj, int endi, int endj) {
     ovalmap[12][53] = ' ';
     ovalmap[12][47] = ' ';
 
+    system("cls");
+
     movementprintoval(starti, startj, endi, endj,ovalmap);
 
     // Print the matrix
@@ -249,6 +252,7 @@ void Tracks::ovaltrack(int starti, int startj, int endi, int endj) {
         }
         std::cout << std::endl;
     }
+    std::cout << "Next Move?" << std::endl;
 }
 
 void Tracks::movementprintoval(int starti, int startj, int endi, int endj, std::vector<std::vector<char>>& matrix)

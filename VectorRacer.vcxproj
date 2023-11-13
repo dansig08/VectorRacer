@@ -129,9 +129,11 @@
   <ItemGroup>
     <ClCompile Include="ideas.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="movement.cpp" />
     <ClCompile Include="Tracks.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="movement.h" />
     <ClInclude Include="Tracks.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
