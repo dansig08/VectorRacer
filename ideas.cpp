@@ -1,6 +1,9 @@
 //This is just where i keep temp ideas for how i am planning on my code running and how i want the console to look while the code is running
 // I'll keep stuff here mostly when i have an idea at the end of a codding session
 
+// oval track start point is i=6 j=50
+
+
 //console
 //	|---------------------------------------------------------------------------------------------------------------|
 //	|																												|
