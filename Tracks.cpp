@@ -217,6 +217,29 @@ void Tracks::ovaltrack(int starti, int startj, int endi, int endj) {
     ovalmap[8][51] = '|';
     ovalmap[9][51] = '|';
 
+    // Track direction arrow
+    ovalmap[12][48] = '-';
+    ovalmap[12][49] = '-';
+    ovalmap[12][50] = '-';
+    ovalmap[12][51] = '-';
+    ovalmap[12][52] = '>';
+    ovalmap[11][47] = ' ';
+    ovalmap[11][48] = ' ';
+    ovalmap[11][49] = ' ';
+    ovalmap[11][50] = ' ';
+    ovalmap[11][51] = ' ';
+    ovalmap[11][52] = ' ';
+    ovalmap[11][53] = ' ';
+    ovalmap[13][47] = ' ';
+    ovalmap[13][48] = ' ';
+    ovalmap[13][49] = ' ';
+    ovalmap[13][50] = ' ';
+    ovalmap[13][51] = ' ';
+    ovalmap[13][52] = ' ';
+    ovalmap[13][53] = ' ';
+    ovalmap[12][53] = ' ';
+    ovalmap[12][47] = ' ';
+
     movementprintoval(starti, startj, endi, endj,ovalmap);
 
     // Print the matrix
