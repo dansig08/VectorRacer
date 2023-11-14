@@ -7,7 +7,7 @@ public:
     ~Movement();
     void vetorcreator(int& starti, int& startj, int& endi, int& endj, char desired);
 private:
-
+    // None
 };
 
 Movement::Movement() {}

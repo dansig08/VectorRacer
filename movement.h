@@ -10,7 +10,7 @@ public:
     void vetorcreator(int& starti, int& startj, int& endi, int& endj, char desired);
 
 private:
-    // You can add private members if needed
+    // None
 };
 
 #endif
