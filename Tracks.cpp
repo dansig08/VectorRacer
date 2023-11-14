@@ -3,14 +3,20 @@
 #include <vector>
 #include <stdlib.h>
 
+std::vector<std::vector<char>> ovalmap;
+
 class Tracks {
 public:
     Tracks();
     ~Tracks();
     void ovaltrack(int starti,int startj,int endi, int endj);
     void movementprintoval(int starti, int startj, int endi, int endj, std::vector<std::vector<char>>& matrix);
+    int crashcheck(int endi, int endj);
+    bool victorycondition(int starti, int startj, int endi, int endj, int i);
 private:
-
+    std::vector<std::vector<char>> ovalmap;
+    std::vector<int> endi_values;
+    std::vector<int> endj_values;
 };
 
 Tracks::Tracks() {}
@@ -22,7 +28,7 @@ void Tracks::ovaltrack(int starti, int startj, int endi, int endj) {
     int borderThickness = 3;
 
     // Create a vector of vectors to represent the matrix
-    std::vector<std::vector<char>> ovalmap(numRows, std::vector<char>(numCols, ' '));
+    ovalmap = std::vector<std::vector<char>>(numRows, std::vector<char>(numCols, ' '));
 
     // Change the top and bottom rows to 'x' (border)
     for (int i = 0; i < borderThickness; i++) {
@@ -243,6 +249,19 @@ void Tracks::ovaltrack(int starti, int startj, int endi, int endj) {
 
     system("cls");
 
+    // Where all the previous positions will be printed out
+
+    endi_values.push_back(endi);
+    endj_values.push_back(endj);
+
+    for (int i = 0; i < endi_values.size(); i++) 
+    {
+        int endii = endi_values[i];
+        int endjj = endj_values[i];
+        ovalmap[endii][endjj] = '*';
+            
+    }
+
     movementprintoval(starti, startj, endi, endj,ovalmap);
 
     // Print the matrix
@@ -267,4 +286,74 @@ void Tracks::movementprintoval(int starti, int startj, int endi, int endj, std::
     matrix[endi - 1][endj + 1] = 'T';
     matrix[endi][endj + 1] = 'G';
     matrix[endi + 1][endj + 1] = 'B';
+}
+
+int Tracks::crashcheck(int endi, int endj)
+{
+    int crash = 0;
+    if ( ovalmap[endi][endj] == 'X' || endi > 49 || endi < 0 || endj>99 || endj < 0)
+    {
+        crash = 1;
+    }
+    else
+    {
+        crash = 0;
+    }
+    return crash;
+}
+
+bool Tracks::victorycondition(int starti, int startj, int endi, int endj,int i)
+{
+    if (i > 30 && endi > 2 && endi < 10 && startj < 50 && endj >= 50)
+    {
+        ovalmap[12][46] = ' ';
+        ovalmap[12][47] = 'F';
+        ovalmap[12][48] = 'I';
+        ovalmap[12][49] = 'N';
+        ovalmap[12][50] = 'I';
+        ovalmap[12][51] = 'S';
+        ovalmap[12][52] = 'H';
+        ovalmap[12][53] = '!';
+        ovalmap[12][54] = ' ';
+        ovalmap[11][46] = ' ';
+        ovalmap[11][47] = ' ';
+        ovalmap[11][48] = ' ';
+        ovalmap[11][49] = ' ';
+        ovalmap[11][50] = ' ';
+        ovalmap[11][51] = ' ';
+        ovalmap[11][52] = ' ';
+        ovalmap[11][53] = ' ';
+        ovalmap[11][54] = ' ';
+        ovalmap[13][46] = ' ';
+        ovalmap[13][47] = ' ';
+        ovalmap[13][48] = ' ';
+        ovalmap[13][49] = ' ';
+        ovalmap[13][50] = ' ';
+        ovalmap[13][51] = ' ';
+        ovalmap[13][52] = ' ';
+        ovalmap[13][53] = ' ';
+        ovalmap[13][54] = ' ';
+
+        endi_values.clear();
+        endj_values.clear();
+        system("cls");
+
+        int numRows = 50;
+        int numCols = 100;
+
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numCols; j++) {
+                std::cout << ovalmap[i][j];
+            }
+            std::cout << std::endl;
+        }
+
+        std::cout << "Moves: " << i << std::endl;
+
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
