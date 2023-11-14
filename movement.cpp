@@ -15,12 +15,15 @@ Movement::~Movement() {}
 
 void Movement::vetorcreator(int& starti, int& startj, int& endi, int& endj, char desired)
 {
+    // Find vector between start and end point
     int deli = endi - starti;
     int delj = endj - startj;
 
+    // set old end to new start
     starti = endi;
     startj = endj;
 
+    // Take user input and modify end point from this
     if (desired == 'e')
     {
         endi += deli - 1;
@@ -52,17 +55,17 @@ void Movement::vetorcreator(int& starti, int& startj, int& endi, int& endj, char
         endi += deli + 1;
         endj += delj;
     }
-    if (desired == 't')
+    else if (desired == 't')
     {
         endi += deli - 1;
         endj += delj + 1;
     }
-    if (desired == 'g')
+    else if (desired == 'g')
     {
         endi += deli;
         endj += delj + 1;
     }
-    if (desired == 'b')
+    else if (desired == 'b')
     {
         endi += deli + 1;
         endj += delj + 1;

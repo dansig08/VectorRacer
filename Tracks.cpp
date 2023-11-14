@@ -30,7 +30,7 @@ void Tracks::ovaltrack(int starti, int startj, int endi, int endj) {
     // Create a vector of vectors to represent the matrix
     ovalmap = std::vector<std::vector<char>>(numRows, std::vector<char>(numCols, ' '));
 
-    // Change the top and bottom rows to 'x' (border)
+    // Change the top and bottom rows to 'X' (border)
     for (int i = 0; i < borderThickness; i++) {
         for (int j = 0; j < numCols; j++) {
             ovalmap[i][j] = 'X';                      // Top border
@@ -38,7 +38,7 @@ void Tracks::ovaltrack(int starti, int startj, int endi, int endj) {
         }
     }
 
-    // Change the first and last columns to 'x' (border)
+    // Change the first and last columns to 'X' (border)
     for (int i = 0; i < numRows; i++) {
         for (int j = 0; j < borderThickness; j++) {
             ovalmap[i][j] = 'X';                      // Left border
@@ -247,13 +247,12 @@ void Tracks::ovaltrack(int starti, int startj, int endi, int endj) {
     ovalmap[12][53] = ' ';
     ovalmap[12][47] = ' ';
 
+    // Clear screen for new move
     system("cls");
 
     // Where all the previous positions will be printed out
-
     endi_values.push_back(endi);
     endj_values.push_back(endj);
-
     for (int i = 0; i < endi_values.size(); i++) 
     {
         int endii = endi_values[i];
@@ -274,6 +273,7 @@ void Tracks::ovaltrack(int starti, int startj, int endi, int endj) {
     std::cout << "Next Move?" << std::endl;
 }
 
+// This prints the movement square
 void Tracks::movementprintoval(int starti, int startj, int endi, int endj, std::vector<std::vector<char>>& matrix)
 {
     matrix[starti][startj] = '*';
@@ -288,10 +288,11 @@ void Tracks::movementprintoval(int starti, int startj, int endi, int endj, std::
     matrix[endi + 1][endj + 1] = 'B';
 }
 
+// This checks if the car has gone off circuit
 int Tracks::crashcheck(int endi, int endj)
 {
     int crash = 0;
-    if ( ovalmap[endi][endj] == 'X' || endi > 49 || endi < 0 || endj>99 || endj < 0)
+    if (endi > 49 || endi < 0 || endj>99 || endj < 0 || ovalmap[endi][endj] == 'X' )
     {
         crash = 1;
     }
@@ -302,6 +303,7 @@ int Tracks::crashcheck(int endi, int endj)
     return crash;
 }
 
+// This checks if the car has met the requirements to complete the circuit when crossing the finish line
 bool Tracks::victorycondition(int starti, int startj, int endi, int endj,int i)
 {
     if (i > 30 && endi > 2 && endi < 10 && startj < 50 && endj >= 50)
@@ -334,10 +336,12 @@ bool Tracks::victorycondition(int starti, int startj, int endi, int endj,int i)
         ovalmap[13][53] = ' ';
         ovalmap[13][54] = ' ';
 
+        // Clear vectors and screen for final view
         endi_values.clear();
         endj_values.clear();
         system("cls");
 
+        // Prints final view of circuit and path
         int numRows = 50;
         int numCols = 100;
 
