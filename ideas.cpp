@@ -3,6 +3,13 @@
 
 // oval track start point is i=6 j=50
 
+/*
+	Questions to ask TK
+		Add more tracks
+		title menu
+		what to include in readme
+		anything else
+*/
 
 //console
 //	|---------------------------------------------------------------------------------------------------------------|
